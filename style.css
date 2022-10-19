@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.game-table {
+    height: 500px;
+    width: 500px;
+    border: 1px solid gray;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    margin-top: 20px;
+}
+
+.game-table .tabs {
+    border: 1px solid gray;
+}
+.game-table .tabs:hover {
+    cursor: pointer;
+    border: 5px solid coral;
+}
+button {
+    padding: 5px;
+    font-weight: bold;
+    background-color: rgb(118, 118, 180);
+    border: none;
+    border-radius: 5px;
+}
