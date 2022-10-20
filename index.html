@@ -11,20 +11,21 @@
 <body>
     <div class="container">
         <h1>Tic Tac Toe Game</h1>
-        <button id="game">NEW GAME</button>
-        <div class="players">
-
-        </div>
+        <div class="players"></div>
         <div class="game-table">
-            <div class="tabs item1"></div>
-            <div class="tabs item2"></div>
-            <div class="tabs item3"></div>
-            <div class="tabs item4"></div>
-            <div class="tabs item5"></div>
-            <div class="tabs item6"></div>
-            <div class="tabs item7"></div>
-            <div class="tabs item8"></div>
-            <div class="tabs item9"></div>
+            <div class="tabs item1" data-cell></div>
+            <div class="tabs item2" data-cell></div>
+            <div class="tabs item3" data-cell></div>
+            <div class="tabs item4" data-cell></div>
+            <div class="tabs item5" data-cell></div>
+            <div class="tabs item6" data-cell></div>
+            <div class="tabs item7" data-cell></div>
+            <div class="tabs item8" data-cell></div>
+            <div class="tabs item9" data-cell></div>
+        </div>
+        <div class="winning-message" id="winningMessage">
+            <div data-winning-message-text>X Wins!!</div>
+            <button id="restartButton">Restart</button>
         </div>
     </div>
 

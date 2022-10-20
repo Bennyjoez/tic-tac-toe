@@ -1,36 +1,151 @@
-* {
-    padding: 0;
-    margin: 0;
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(100px * 0.9)
+}
+
+body {
+    margin: 0;
+}
+
 .container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: aquamarine;
+    grid-template-columns: repeat(3, auto);
 }
 
 .game-table {
-    height: 500px;
-    width: 500px;
-    border: 1px solid gray;
     display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    margin-top: 20px;
+    grid-template-columns: repeat(3, auto);
+    justify-items: center;
+    align-items: center;
 }
 
-.game-table .tabs {
-    border: 1px solid gray;
-}
-.game-table .tabs:hover {
+.tabs {
+    height: var(--cell-size);
+    width: var(--cell-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid black;
     cursor: pointer;
-    border: 5px solid coral;
 }
-button {
-    padding: 5px;
-    font-weight: bold;
-    background-color: rgb(118, 118, 180);
-    border: none;
+
+.item1, .item2, .item3 {
+    border-top: none;
+}
+.item1, .item4, .item7 {
+    border-left: none;
+}
+.item7, .item8, .item9 {
+    border-bottom: none;
+}
+.item3, .item6, .item9 {
+    border-right: none;
+}
+
+/* x's and o's */
+
+.tabs.x::before,
+.tabs.x::after,
+.game-table.x .tabs:not(.x):not(.circle):hover::before,
+.game-table.x .tabs:not(.x):not(.circle):hover::after
+{
+    content: '';
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    position: absolute;
+
+}
+
+.tabs.x::before,
+.game-table.x .tabs:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+}
+.tabs.x::after,
+.game-table.x .tabs:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+}
+
+.tabs.circle::before,
+.tabs.circle::after,
+.game-table.circle .tabs:not(.x):not(.circle):hover::before,
+.game-table.circle .tabs:not(.x):not(.circle):hover::after
+{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+
+}
+
+.circle::before,
+.game-table.circle .tabs:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+.circle::after,
+.game-table.circle .tabs:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
+}
+
+.tabs.x, 
+.tabs.circle {
+    cursor: not-allowed;
+}
+
+.tabs.x::before,
+.tabs.x::after,
+.tabs.circle::before {
+    background-color: black;
+}
+
+.game-table.x .tabs:not(.x):not(.circle):hover::before,
+.game-table.x .tabs:not(.x):not(.circle):hover::after,
+.game-table.circle .tabs:not(.x):not(.circle):hover::before {
+    background-color: lightgray;
+}
+
+
+.winning-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 90%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    display: none;
+}
+
+.winning-message button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: 2px, 10px;
     border-radius: 5px;
+    cursor: pointer;
+}
+.winning-message button:hover {
+    background-color: black;
+    border-color: white;
+    color: white;
+}
+
+.winning-message.show {
+    display: flex;
 }
